@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace RaceWinners;
@@ -23,6 +24,8 @@ public class Program
         int OBScore = 0;
         int OCScore = 0;
         int ODScore = 0;
+
+ 
 
         foreach (var groups in data) // goes through each group
         {
@@ -52,6 +55,26 @@ public class Program
             }
         }
 
+
         Console.WriteLine($"\nOverall Scores:\nClass A: {OAScore}\nClass B: {OBScore}\nClass C: {OCScore}\nClass D: {ODScore}");
+
+        int[] scores = { OAScore, OBScore, OCScore, ODScore };
+        String[] classes = { "Class A", "Class B", "Class C", "Class D" };
+
+        int winnerScore = scores[0];
+        String winningClass = classes[0];
+
+        for (int i = 0; i < scores.Length; i++)
+        {
+            if (scores[i] > winnerScore)
+            {
+                winnerScore = scores[i];
+                winningClass = classes[i];
+            }
+        }
+
+
+        Console.WriteLine($"\n{winningClass} won with {winnerScore} points!!!");
+
     }
 }
