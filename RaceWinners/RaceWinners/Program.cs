@@ -24,7 +24,7 @@ public class Program
         int OBScore = 0;
         int OCScore = 0;
         int ODScore = 0;
-
+        // overall scores to add to for each class
  
 
         foreach (var groups in data) // goes through each group
@@ -36,7 +36,7 @@ public class Program
                     int scoreToAdd = 21 - ranks; //every rank is higher than 0, so 21-1 = 20 points, which means rank number one will get 20 points and the worse the rank the less the score
                     // Adds the score to the appropriate class based on the group name
 
-                    switch (groups.Name) // 'switch' is a control flow statement that executes code blocks based on the value of an expression (here groups.Name)
+                    switch (groups.Name) // 'switch' lets us go through the different classes and add the score to the correct one
                     {
                         case "Class A":
                             OAScore += scoreToAdd;
@@ -55,7 +55,9 @@ public class Program
             }
         }
 
-
+        Console.WriteLine("\nCalculating overall scores...Overall scores will be calculated based on the top 20 runners overall only.\n" +
+        "First place overall gets 20 points and is added to the overall score for that class, second gets 19, third gets 18, etc.");
+        await Task.Delay(5000); //add some suspense by making user wait
         Console.WriteLine($"\nOverall Scores:\nClass A: {OAScore}\nClass B: {OBScore}\nClass C: {OCScore}\nClass D: {ODScore}");
 
         int[] scores = { OAScore, OBScore, OCScore, ODScore };
