@@ -72,9 +72,30 @@ public class Program
                 winningClass = classes[i];
             }
         }
+        
+        //Determine first, second, third and fourth place
+        for (int i = 0; i < scores.Length - 1; i++)
+        {
+            for (int j = i + 1; j < scores.Length; j++)
+            {
+                if (scores[i] < scores[j])
+                {
+                    // Swap scores
+                    int tempScore = scores[i];
+                    scores[i] = scores[j];
+                    scores[j] = tempScore;
+                    // Swap corresponding classes
+                    string tempClass = classes[i];
+                    classes[i] = classes[j];
+                    classes[j] = tempClass;
+                }
+            }
+        }
 
 
         Console.WriteLine($"\n{winningClass} won with {winnerScore} points!!!");
+        //print who came in first, second, third and fourth place
+        Console.WriteLine($"\nFinal Standings:\n1st Place: {classes[0]} with {scores[0]} points\n2nd Place: {classes[1]} with {scores[1]} points\n3rd Place: {classes[2]} with {scores[2]} points\n4th Place: {classes[3]} with {scores[3]} points");
 
     }
 }
